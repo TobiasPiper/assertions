@@ -8,6 +8,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -27,21 +28,36 @@ public class BarTest {
         verify(mockFoo, times(2)).divide(anyLong(), anyLong());
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testDivisionByZero() {
-        cut.complicatedCalculation(10000000, 0);
+        try {
+            cut.complicatedCalculation(10000000, 0);
+            fail("Should have thrown ArthititmeticExcpetndf");
+        } catch (ArithmeticException e) {
+            // success
+        }
         verify(mockFoo, times(2)).divide(anyLong(), anyLong());
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testDivisionByZero2() {
-        cut.complicatedCalculation(0, 5);
+        try {
+            cut.complicatedCalculation(0, 5);
+            fail("Should have thrown ArthititmeticExcpetndf");
+        } catch (ArithmeticException e) {
+            // success
+        }
         verify(mockFoo, times(2)).divide(anyLong(), anyLong());
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testDivisionByZero3() {
-        cut.complicatedCalculation(0, 0);
+        try {
+            cut.complicatedCalculation(0, 0);
+            fail("Should have thrown ArthititmeticExcpetndf");
+        } catch (ArithmeticException e) {
+            // success
+        }
         verify(mockFoo, times(1)).divide(anyLong(), anyLong());
     }
 }
