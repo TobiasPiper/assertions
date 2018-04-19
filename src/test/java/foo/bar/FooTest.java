@@ -26,6 +26,13 @@ public class FooTest {
         cut.divide(5, 0);
     }
 
+    @Test(expected = ArithmeticException.class)
+    public void testDivideByAnotherNull() {
+        cut.divide(5, 7);
+        cut.divide(5, 3);
+        cut.divide(5, 2);
+    }
+
     @Test
     public void testReverse() {
         assertNotNull(cut.reverse("Foo"));
