@@ -43,6 +43,7 @@ public class FooTestAssertJ {
         assertTrue(cut.reverse("Foo").equals("ooF"));
 
         assertThat(cut.reverse("Foo"))
+                .as("Reversing is cool")
                 .isNotNull()
                 .isNotBlank()
                 .startsWith("o")
@@ -60,7 +61,7 @@ public class FooTestAssertJ {
                 GLEN_GRANT,
                 GLENMORANGIE);
 
-        assertThat(list).hasSize(6);
+        assertThat(list).as("Everyone should have at least 6 whiskeys at home").hasSize(6);
         assertThat(list)
                 .extracting("name")
                 .contains("Lagavulin", "Bowmore", "Glenmorangie")
