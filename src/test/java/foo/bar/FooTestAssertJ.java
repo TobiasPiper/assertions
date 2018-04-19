@@ -48,7 +48,7 @@ public class FooTestAssertJ {
                 .isNotBlank()
                 .startsWith("o")
                 .endsWith("ooF")
-                .isEqualToIgnoringCase("foo");
+                .isEqualToIgnoringCase("oof");
     }
 
     @Test
@@ -79,5 +79,15 @@ public class FooTestAssertJ {
 
     }
 
+    @Test
+    public void moreList() {
+        BlaAssert.assertThat(LAGAVULIN)
+                .hasName("Lagavulin")
+                .hasAge(16L);
+
+        BlaAssert.assertThat(TALISKER)
+                .hasName("Foo")
+                .hasAge(42L);
+    }
 
 }
