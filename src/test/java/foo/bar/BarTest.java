@@ -32,4 +32,13 @@ public class BarTest {
         cut.complicatedCalculation(10000000, 0);
     }
 
+    @Test(expected = ArithmeticException.class)
+    public void testDivisionByZero2() {
+        cut.complicatedCalculation(0, 5);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivisionByZero3() {
+        cut.complicatedCalculation(0, 0);
+    }
 }
