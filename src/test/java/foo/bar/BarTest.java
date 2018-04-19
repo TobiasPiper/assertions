@@ -30,15 +30,18 @@ public class BarTest {
     @Test(expected = ArithmeticException.class)
     public void testDivisionByZero() {
         cut.complicatedCalculation(10000000, 0);
+        verify(mockFoo, times(2)).divide(anyLong(), anyLong());
     }
 
     @Test(expected = ArithmeticException.class)
     public void testDivisionByZero2() {
         cut.complicatedCalculation(0, 5);
+        verify(mockFoo, times(2)).divide(anyLong(), anyLong());
     }
 
     @Test(expected = ArithmeticException.class)
     public void testDivisionByZero3() {
         cut.complicatedCalculation(0, 0);
+        verify(mockFoo, times(1)).divide(anyLong(), anyLong());
     }
 }
