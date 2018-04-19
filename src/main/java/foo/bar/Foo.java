@@ -1,5 +1,8 @@
 package foo.bar;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Foo {
 
     long divide(final long x, final long y) {
@@ -13,6 +16,10 @@ public class Foo {
             result[k] = bytes[i];
         }
         return new String(result);
+    }
+
+    List<Bla> asList(Bla... strings) {
+        return Arrays.asList(strings);
     }
 
 }
