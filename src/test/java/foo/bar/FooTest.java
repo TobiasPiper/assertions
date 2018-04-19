@@ -21,6 +21,11 @@ public class FooTest {
         assertThat(cut.divide(6, 2), is(3));
     }
 
+    @Test(expected = ArithmeticException.class)
+    public void testDivideByNull() {
+        cut.divide(5, 0);
+    }
+
     @Test
     public void testReverse() {
         assertNotNull(cut.reverse("Foo"));
@@ -29,9 +34,6 @@ public class FooTest {
         assertThat(cut.reverse("Foo"), is(not(nullValue())));
         assertThat(cut.reverse("Foo"), is("ooF"));
 
-        // failing
-//        assertTrue(cut.reverse("Fo o").equals("ooF"));
-//        assertThat(cut.reverse("Fo o"), is("ooF"));
     }
 
 }
