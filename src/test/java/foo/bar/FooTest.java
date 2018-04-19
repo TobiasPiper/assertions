@@ -25,19 +25,12 @@ public class FooTest {
     @Test
     public void testDivide() {
         assertEquals(3, cut.divide(6, 2));
-        assertThat(cut.divide(6, 2), is(3));
+        assertThat(cut.divide(6, 2), is(3L));
     }
 
     @Test(expected = ArithmeticException.class)
     public void testDivideByNull() {
         cut.divide(5, 0);
-    }
-
-    @Test(expected = ArithmeticException.class)
-    public void testDivideByAnotherNull() {
-        cut.divide(5, 7);
-        cut.divide(5, 3);
-        cut.divide(5, 2);
     }
 
     @Test
