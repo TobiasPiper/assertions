@@ -2,7 +2,7 @@ package foo.bar;
 
 public class Foo {
 
-    double divide(final double x, final double y) {
+    long divide(final long x, final long y) {
         return x / y;
     }
 

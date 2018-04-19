@@ -3,6 +3,7 @@ package foo.bar;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 public class FooTest {
@@ -16,13 +17,21 @@ public class FooTest {
 
     @Test
     public void testDivide() {
-        assertEquals(3d, cut.divide(6d, 2d), 0d);
+        assertEquals(3, cut.divide(6, 2));
+        assertThat(cut.divide(6, 2), is(3));
     }
 
     @Test
     public void testReverse() {
         assertNotNull(cut.reverse("Foo"));
         assertTrue(cut.reverse("Foo").equals("ooF"));
+
+        assertThat(cut.reverse("Foo"), is(not(nullValue())));
+        assertThat(cut.reverse("Foo"), is("ooF"));
+
+        // failing
+//        assertTrue(cut.reverse("Fo o").equals("ooF"));
+//        assertThat(cut.reverse("Fo o"), is("ooF"));
     }
 
 }
