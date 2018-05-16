@@ -1,5 +1,6 @@
 package foo.bar;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -30,37 +31,25 @@ public class BarTest {
 
     @Test
     public void testDivisionByZero() {
-        try {
-            cut.complicatedCalculation(10000000, 0);
-            fail("Should have thrown ArthititmeticExcpetndf");
-        }
-        catch (ArithmeticException e) {
-            // success
-        }
+        Assertions.assertThatThrownBy(() -> cut.complicatedCalculation(10000000, 0))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("/ by zero");
         verify(mockFoo, times(2)).divide(anyLong(), anyLong());
     }
 
     @Test
     public void testDivisionByZero2() {
-        try {
-            cut.complicatedCalculation(0, 5);
-            fail("Should have thrown ArthititmeticExcpetndf");
-        }
-        catch (ArithmeticException e) {
-            // success
-        }
-        verify(mockFoo, times(2)).divide(anyLong(), anyLong());
+        Assertions.assertThatThrownBy(() -> cut.complicatedCalculation(0, 5))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("/ by zero");
+        verify(mockFoo, times(1)).divide(anyLong(), anyLong());
     }
 
     @Test
     public void testDivisionByZero3() {
-        try {
-            cut.complicatedCalculation(0, 0);
-            fail("Should have thrown ArthititmeticExcpetndf");
-        }
-        catch (ArithmeticException e) {
-            // success
-        }
+        Assertions.assertThatThrownBy(() -> cut.complicatedCalculation(0, 0))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("/ by zero");
         verify(mockFoo, times(1)).divide(anyLong(), anyLong());
     }
 
