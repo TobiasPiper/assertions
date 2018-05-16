@@ -1,7 +1,18 @@
+
+plugins {
+    id 'org.assertj.generator' version '0.0.6b'
+}
+apply plugin: 'java'
+
 group 'com.funghisoft'
 version '1.0.0-SNAPSHOT'
 
-apply plugin: 'java'
+sourceSets {
+    main {
+        // must specify assertJ block to have it applied
+        assertJ {}
+    }
+}
 
 sourceCompatibility = 1.8
 

@@ -62,7 +62,7 @@ public class FooTestAssertJ {
                 GLENMORANGIE);
 
         assertThat(list).as("Everyone should have at least 6 whiskeys at home").hasSize(6);
-        
+
         assertThat(list)
                 .extracting("name")
                 .contains("Lagavulin", "Bowmore", "Glenmorangie")
