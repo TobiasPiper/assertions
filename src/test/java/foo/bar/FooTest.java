@@ -6,7 +6,14 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
+
+import java.util.List;
 
 public class FooTest {
 
@@ -45,4 +52,34 @@ public class FooTest {
 
     }
 
+    @Test
+    public void testList() {
+        List<Bla> list = cut.asList(
+                new Bla("Lagavulin", 16L),
+                new Bla("Bowmore", 15L),
+                new Bla("Talisker", 10L),
+                new Bla("Ardberg", 12L),
+                new Bla("Glen Grant", 18L),
+                new Bla("Glenmorangie", 15L));
+
+        assertThat(list, not(empty()));
+        assertThat(list, hasSize(6));
+        assertThat(list, contains(
+                hasProperty("name", is("Lagavulin")),
+                hasProperty("name", is("Bowmore")),
+                hasProperty("name", is("Talisker")),
+                hasProperty("age", is(12L)),
+                hasProperty("name", is("Glen Grant")),
+                hasProperty("name", is("Glenmorangie"))
+        ));
+        assertThat(list, containsInAnyOrder(
+                hasProperty("name", is("Bowmore")),
+                hasProperty("name", is("Lagavulin")),
+                hasProperty("name", is("Talisker")),
+                hasProperty("name", is("Glen Grant")),
+                hasProperty("name", is("Glenmorangie")),
+                hasProperty("age", is(12L))
+        ));
+
+    }
 }
